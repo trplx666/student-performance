@@ -26,33 +26,32 @@ public class PerformanceService {
 
     @Autowired
     private EntityService entityService;
-    public Performance rateStudent(PerformanceDto performanceDto) {
-        Student student = studentRepository.findById(performanceDto.getStudentId())
-                .orElseThrow(() -> new RuntimeException("Студент с ID " + performanceDto.getStudentId() + " не найден"));
 
-        Lesson lesson = lessonRepository.findById(performanceDto.getLessonId())
-                .orElseThrow(() -> new RuntimeException("Урок с ID " + performanceDto.getLessonId() + " не найден"));
-
-        Performance performance = new Performance(student, lesson, performanceDto.getGrade(), performanceDto.getWeight(), performanceDto.getComment());
-
-        return entityService.createEntity(performanceRepository, performance);
+    public Performance gradeStudent(PerformanceDto performanceDto) {
+        return entityService.createEntity(performanceRepository, createPerformanceEntity(performanceDto));
     }
 
     public Double getStudentAverageGradeBySubject(Long studentId, Long subjectId) {
         List<Performance> performances = performanceRepository.findByStudentIdAndLessonSubjectId(studentId, subjectId);
+        return performances.isEmpty() ? null : calculateAverageGrade(performances);
+    }
 
-        if (performances.isEmpty()) {
-            return null;
-        }
+    private Performance createPerformanceEntity(PerformanceDto performanceDto) {
+        Student student = entityService.findEntityByIdOrThrow(studentRepository,performanceDto.getStudentId());
+        Lesson lesson = entityService.findEntityByIdOrThrow(lessonRepository, performanceDto.getLessonId());
+        Integer grade = performanceDto.getGrade();
+        Integer weight = performanceDto.getWeight();
+        String comment = performanceDto.getComment();
+        return new Performance(student,lesson,grade,weight,comment);
+    }
 
+    private Double calculateAverageGrade(List<Performance> performances) {
         double weightedSum = 0;
         int totalWeight = 0;
-
         for (Performance performance : performances) {
             weightedSum += performance.getGrade() * performance.getWeight();
             totalWeight += performance.getWeight();
         }
-
         return totalWeight == 0 ? 0.0 : weightedSum / totalWeight;
     }
 }

@@ -23,7 +23,7 @@ public class StudentService {
     private EntityService entityService;
 
     public Student createStudent(StudentDto studentDto) {
-        return createStudentEntity(studentDto);
+        return entityService.createEntity(studentRepository, createStudentEntity(studentDto));
     }
 
     @Transactional

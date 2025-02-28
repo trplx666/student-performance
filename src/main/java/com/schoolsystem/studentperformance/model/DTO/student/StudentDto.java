@@ -1,13 +1,14 @@
 package com.schoolsystem.studentperformance.model.DTO.student;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class StudentDto {
     @NotBlank(message = "Ошибка. Username не должен быть пустым!")
     private String username;
     private String firstName;
     private String lastName;
-    @NotBlank(message = "Ошибка. groupId не должен быть пустым!")
+    @NotNull(message = "Ошибка. groupId не должен быть пустым!")
     private Long groupId;
     private String email;
     private String phoneNumber;

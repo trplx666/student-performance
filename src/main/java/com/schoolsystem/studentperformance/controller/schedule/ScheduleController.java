@@ -2,6 +2,7 @@ package com.schoolsystem.studentperformance.controller.schedule;
 
 import com.schoolsystem.studentperformance.model.DTO.schedule.ScheduleDto;
 import com.schoolsystem.studentperformance.service.schedule.ScheduleService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class ScheduleController {
     private ScheduleService scheduleService;
 
     @GetMapping("/get/{group_name}")
-    public ResponseEntity<?> getSchedule(@PathVariable String group_name) {
+    public ResponseEntity<?> getSchedule(@Valid @PathVariable String group_name) {
         List<ScheduleDto> schedule = scheduleService.getSchedule(group_name);
         return ResponseEntity.ok(schedule);
     }
