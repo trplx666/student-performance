@@ -2,7 +2,7 @@ package com.schoolsystem.studentperformance.service.student;
 
 import com.schoolsystem.studentperformance.model.group.Group;
 import com.schoolsystem.studentperformance.model.student.Student;
-import com.schoolsystem.studentperformance.model.student.DTO.StudentDto;
+import com.schoolsystem.studentperformance.model.DTO.student.StudentDto;
 import com.schoolsystem.studentperformance.repository.group.GroupRepository;
 import com.schoolsystem.studentperformance.repository.student.StudentRepository;
 import com.schoolsystem.studentperformance.service.CreatorService;

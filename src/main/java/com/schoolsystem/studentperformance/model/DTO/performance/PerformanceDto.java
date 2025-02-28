@@ -1,4 +1,4 @@
-package com.schoolsystem.studentperformance.model.performance.DTO;
+package com.schoolsystem.studentperformance.model.DTO.performance;
 
 public class PerformanceDto {
     private Long student_id;

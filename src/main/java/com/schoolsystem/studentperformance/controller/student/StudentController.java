@@ -1,7 +1,7 @@
 package com.schoolsystem.studentperformance.controller.student;
 
 import com.schoolsystem.studentperformance.model.student.Student;
-import com.schoolsystem.studentperformance.model.student.DTO.StudentDto;
+import com.schoolsystem.studentperformance.model.DTO.student.StudentDto;
 import com.schoolsystem.studentperformance.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

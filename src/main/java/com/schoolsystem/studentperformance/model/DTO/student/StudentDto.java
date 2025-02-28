@@ -1,4 +1,4 @@
-package com.schoolsystem.studentperformance.model.student.DTO;
+package com.schoolsystem.studentperformance.model.DTO.student;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,4 +1,4 @@
-package com.schoolsystem.studentperformance.model.lesson.DTO;
+package com.schoolsystem.studentperformance.model.DTO.lesson;
 
 import java.time.LocalDateTime;
 

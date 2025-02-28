@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import com.schoolsystem.studentperformance.model.performance.Performance;
-import com.schoolsystem.studentperformance.model.performance.DTO.PerformanceDto;
+import com.schoolsystem.studentperformance.model.DTO.performance.PerformanceDto;
 import com.schoolsystem.studentperformance.service.performance.PerformanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 

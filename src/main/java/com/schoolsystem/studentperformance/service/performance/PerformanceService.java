@@ -1,6 +1,6 @@
 package com.schoolsystem.studentperformance.service.performance;
 
-import com.schoolsystem.studentperformance.model.performance.DTO.PerformanceDto;
+import com.schoolsystem.studentperformance.model.DTO.performance.PerformanceDto;
 import com.schoolsystem.studentperformance.model.performance.Performance;
 import com.schoolsystem.studentperformance.model.lesson.Lesson;
 import com.schoolsystem.studentperformance.model.student.Student;
