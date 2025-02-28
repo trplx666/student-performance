@@ -22,7 +22,7 @@ public interface LessonRepository extends JpaRepository<Lesson, Long> {
             JOIN l.subject s
             JOIN l.professor p
             JOIN l.group g
-            WHERE g.name = :groupName
+            WHERE g.groupName = :groupName
             ORDER BY l.lessonDate
             """)
     List<ScheduleDto> findScheduleByGroupName(@Param("groupName") String groupName);

@@ -7,7 +7,7 @@ import com.schoolsystem.studentperformance.model.student.Student;
 import com.schoolsystem.studentperformance.repository.lesson.LessonRepository;
 import com.schoolsystem.studentperformance.repository.performance.PerformanceRepository;
 import com.schoolsystem.studentperformance.repository.student.StudentRepository;
-import com.schoolsystem.studentperformance.service.CreatorService;
+import com.schoolsystem.studentperformance.service.entity.EntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,24 +25,24 @@ public class PerformanceService {
     private LessonRepository lessonRepository;
 
     @Autowired
-    private CreatorService creatorService;
+    private EntityService entityService;
     public Performance rateStudent(PerformanceDto performanceDto) {
-        Student student = studentRepository.findById(performanceDto.getStudent_id())
-                .orElseThrow(() -> new RuntimeException("Студент с ID " + performanceDto.getStudent_id() + " не найден"));
+        Student student = studentRepository.findById(performanceDto.getStudentId())
+                .orElseThrow(() -> new RuntimeException("Студент с ID " + performanceDto.getStudentId() + " не найден"));
 
-        Lesson lesson = lessonRepository.findById(performanceDto.getLesson_id())
-                .orElseThrow(() -> new RuntimeException("Урок с ID " + performanceDto.getLesson_id() + " не найден"));
+        Lesson lesson = lessonRepository.findById(performanceDto.getLessonId())
+                .orElseThrow(() -> new RuntimeException("Урок с ID " + performanceDto.getLessonId() + " не найден"));
 
         Performance performance = new Performance(student, lesson, performanceDto.getGrade(), performanceDto.getWeight(), performanceDto.getComment());
 
-        return creatorService.createEntity(performanceRepository, performance);
+        return entityService.createEntity(performanceRepository, performance);
     }
 
     public Double getStudentAverageGradeBySubject(Long studentId, Long subjectId) {
         List<Performance> performances = performanceRepository.findByStudentIdAndLessonSubjectId(studentId, subjectId);
 
         if (performances.isEmpty()) {
-            return null; // или можно вернуть 0.0
+            return null;
         }
 
         double weightedSum = 0;

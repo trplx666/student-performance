@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class LessonDto {
     private String topic;
-    private Long subject_id;
-    private Long professor_id;
-    private Long group_id;
+    private Long subjectId;
+    private Long professorId;
+    private Long groupId;
     private LocalDateTime lessonDate;
 
-    public LessonDto(String topic, Long subject_id, Long professor_id, Long group_id, LocalDateTime lessonDate) {
+    public LessonDto(String topic, Long subjectId, Long professorId, Long groupId, LocalDateTime lessonDate) {
         this.topic = topic;
-        this.subject_id = subject_id;
-        this.professor_id = professor_id;
-        this.group_id = group_id;
+        this.subjectId = subjectId;
+        this.professorId = professorId;
+        this.groupId = groupId;
         this.lessonDate = lessonDate;
     }
 
@@ -25,28 +25,28 @@ public class LessonDto {
         this.topic = topic;
     }
 
-    public Long getSubject_id() {
-        return subject_id;
+    public Long getSubjectId() {
+        return subjectId;
     }
 
-    public void setSubject_id(Long subject_id) {
-        this.subject_id = subject_id;
+    public void setSubjectId(Long subjectId) {
+        this.subjectId = subjectId;
     }
 
-    public Long getProfessor_id() {
-        return professor_id;
+    public Long getProfessorId() {
+        return professorId;
     }
 
-    public void setProfessor_id(Long professor_id) {
-        this.professor_id = professor_id;
+    public void setProfessorId(Long professorId) {
+        this.professorId = professorId;
     }
 
-    public Long getGroup_id() {
-        return group_id;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroup_id(Long group_id) {
-        this.group_id = group_id;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     public LocalDateTime getLessonDate() {
@@ -61,9 +61,9 @@ public class LessonDto {
     public String toString() {
         return "LessonDto{" +
                 "topic='" + topic + '\'' +
-                ", subject_id=" + subject_id +
-                ", professor_id=" + professor_id +
-                ", group_id=" + group_id +
+                ", subjectId=" + subjectId +
+                ", professorId=" + professorId +
+                ", groupId=" + groupId +
                 ", lessonDate=" + lessonDate +
                 '}';
     }

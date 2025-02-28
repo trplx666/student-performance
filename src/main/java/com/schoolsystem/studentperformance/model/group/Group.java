@@ -13,7 +13,7 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String group_name;
+    private String groupName;
 
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
@@ -26,12 +26,12 @@ public class Group {
 
     }
 
-    public String getGroup_name() {
-        return group_name;
+    public String getgroupName() {
+        return groupName;
     }
 
-    public void setGroup_name(String group_name) {
-        this.group_name = group_name;
+    public void setgroupName(String groupName) {
+        this.groupName = groupName;
     }
 
     public Department getDepartment() {
@@ -53,7 +53,7 @@ public class Group {
     @Override
     public String toString() {
         return "Group{" +
-                "group_name='" + group_name + '\'' +
+                "groupName='" + groupName + '\'' +
                 ", department=" + department +
                 ", students=" + students +
                 '}';

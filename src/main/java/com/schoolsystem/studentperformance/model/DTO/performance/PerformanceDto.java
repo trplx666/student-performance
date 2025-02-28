@@ -1,34 +1,34 @@
 package com.schoolsystem.studentperformance.model.DTO.performance;
 
 public class PerformanceDto {
-    private Long student_id;
-    private Long lesson_id;
+    private Long studentId;
+    private Long lessonId;
     private Integer grade;
     private Integer weight;
     private String comment;
 
-    public PerformanceDto(Long student_id, Long lesson_id, Integer grade, Integer weight, String comment) {
-        this.student_id = student_id;
-        this.lesson_id = lesson_id;
+    public PerformanceDto(Long studentId, Long lessonId, Integer grade, Integer weight, String comment) {
+        this.studentId = studentId;
+        this.lessonId = lessonId;
         this.grade = grade;
         this.weight = weight;
         this.comment = comment;
     }
 
-    public Long getStudent_id() {
-        return student_id;
+    public Long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(Long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
 
-    public Long getLesson_id() {
-        return lesson_id;
+    public Long getLessonId() {
+        return lessonId;
     }
 
-    public void setLesson_id(Long lesson_id) {
-        this.lesson_id = lesson_id;
+    public void setLessonId(Long lessonId) {
+        this.lessonId = lessonId;
     }
 
     public Integer getGrade() {
@@ -58,8 +58,8 @@ public class PerformanceDto {
     @Override
     public String toString() {
         return "PerformanceDto{" +
-                "student_id=" + student_id +
-                ", lesson_id=" + lesson_id +
+                "studentId=" + studentId +
+                ", lessonId=" + lessonId +
                 ", grade=" + grade +
                 ", weight=" + weight +
                 ", comment='" + comment + '\'' +

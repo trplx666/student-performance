@@ -11,10 +11,10 @@ public class Student {
     private Long id;
     @Column(unique = true)
     private String username;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String phone_number;
+    private String phoneNumber;
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
@@ -23,12 +23,12 @@ public class Student {
 
     }
 
-    public Student(String username, String first_name, String last_name, String email, String phone_number, Group group) {
+    public Student(String username, String firstName, String lastName, String email, String phoneNumber, Group group) {
         this.username = username;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.phone_number = phone_number;
+        this.phoneNumber = phoneNumber;
         this.group = group;
     }
 
@@ -40,20 +40,20 @@ public class Student {
         this.username = username;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -64,12 +64,12 @@ public class Student {
         this.email = email;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Group getGroup() {
@@ -84,10 +84,10 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "username='" + username + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", phone_number='" + phone_number + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 ", group=" + group +
                 '}';
     }

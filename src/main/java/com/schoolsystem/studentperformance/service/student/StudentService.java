@@ -5,7 +5,7 @@ import com.schoolsystem.studentperformance.model.student.Student;
 import com.schoolsystem.studentperformance.model.DTO.student.StudentDto;
 import com.schoolsystem.studentperformance.repository.group.GroupRepository;
 import com.schoolsystem.studentperformance.repository.student.StudentRepository;
-import com.schoolsystem.studentperformance.service.CreatorService;
+import com.schoolsystem.studentperformance.service.entity.EntityService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,33 +20,35 @@ public class StudentService {
     private GroupRepository groupRepository;
 
     @Autowired
-    private CreatorService creatorService;
+    private EntityService entityService;
 
     public Student createStudent(StudentDto studentDto) {
-        Group group = groupRepository.findById(studentDto.getGroup_id())
-                .orElseThrow(() -> new RuntimeException("Группа с " + studentDto.getGroup_id() + " id не найдена!"));
-
-        Student student = new Student(studentDto.getUsername(), studentDto.getFirst_name(), studentDto.getLast_name(), studentDto.getEmail(), studentDto.getPhone_number(), group);
-        return creatorService.createEntity(studentRepository, student);
+        return createStudentEntity(studentDto);
     }
 
     @Transactional
     public Student updateStudent(Long studentId, StudentDto studentDto) {
-        Student student = studentRepository.findById(studentId)
-                .orElseThrow(() -> new RuntimeException("Студент с ID " + studentId + " не найден"));
+        Student student = entityService.findEntityByIdOrThrow(studentRepository, studentId);
+        return entityService.createEntity(studentRepository, updateStudentEntityValue(studentDto, student));
+    }
 
-        if (studentDto.getGroup_id() != null) {
-            Group group = groupRepository.findById(studentDto.getGroup_id())
-                    .orElseThrow(() -> new RuntimeException("Группа с ID " + studentDto.getGroup_id() + " не найдена"));
-            student.setGroup(group);
-        }
+    private Student createStudentEntity(StudentDto studentDto) {
+        String username = studentDto.getUsername();
+        String firstName = studentDto.getFirstName();
+        String lastName = studentDto.getLastName();
+        String email = studentDto.getEmail();
+        String phoneNumber = studentDto.getPhoneNumber();
+        Group group = entityService.findEntityByIdOrThrow(groupRepository, studentDto.getGroupId());
+        return new Student(username, firstName, lastName, email, phoneNumber, group);
+    }
 
-        if (studentDto.getFirst_name() != null) {
-            student.setFirst_name(studentDto.getFirst_name());
-        }
-        if (studentDto.getLast_name() != null) {
-            student.setLast_name(studentDto.getLast_name());
-        }
-        return creatorService.createEntity(studentRepository, student);
+    private Student updateStudentEntityValue(StudentDto studentDto, Student student) {
+        entityService.updateEntityValue(studentDto.getUsername(), student::setUsername);
+        entityService.updateEntityValue(studentDto.getFirstName(), student::setFirstName);
+        entityService.updateEntityValue(studentDto.getLastName(), student::setLastName);
+        entityService.updateEntityValue(studentDto.getEmail(), student::setEmail);
+        entityService.updateEntityValue(studentDto.getPhoneNumber(), student::setPhoneNumber);
+        entityService.updateEntityValue(studentDto.getGroupId(), id -> student.setGroup(entityService.findEntityByIdOrThrow(groupRepository, id)));
+        return student;
     }
 }

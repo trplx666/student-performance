@@ -13,7 +13,7 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String department_name;
+    private String departmentName;
 
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -26,12 +26,12 @@ public class Department {
 
     }
 
-    public String getDepartment_name() {
-        return department_name;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setDepartment_name(String department_name) {
-        this.department_name = department_name;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     public List<Subject> getSubjects() {
@@ -53,7 +53,7 @@ public class Department {
     @Override
     public String toString() {
         return "Department{" +
-                "department_name='" + department_name + '\'' +
+                "departmentName='" + departmentName + '\'' +
                 ", subjects=" + subjects +
                 ", groups=" + groups +
                 '}';

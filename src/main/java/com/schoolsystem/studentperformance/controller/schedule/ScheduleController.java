@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController()
@@ -18,9 +17,9 @@ public class ScheduleController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @GetMapping("/get/{id}")
-    public ResponseEntity<?> getSchedule(@PathVariable String groupName) {
-        List<ScheduleDto> schedule = scheduleService.getSchedule(groupName);
+    @GetMapping("/get/{group_name}")
+    public ResponseEntity<?> getSchedule(@PathVariable String group_name) {
+        List<ScheduleDto> schedule = scheduleService.getSchedule(group_name);
         return ResponseEntity.ok(schedule);
     }
 }
